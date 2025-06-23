@@ -1,13 +1,11 @@
 module "eks_module" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "20.8.3"
+  version = "19.21.0"
 
   cluster_name    = var.cluster_name
   cluster_version = "1.30"
   subnet_ids      = var.subnet_ids
   vpc_id          = var.vpc_id
-
-  enable_cluster_log_types = []
 
   eks_managed_node_groups = {
     default = {
