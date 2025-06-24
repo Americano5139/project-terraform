@@ -25,9 +25,7 @@ jobs:
           terraform init \
             -backend-config="bucket=nextcloud-s3-5139" \
             -backend-config="key=terraform/terraform.tfstate" \
-            -backend-config="region=${{ secrets.AWS_REGION }}" \
-            -backend-config="dynamodb_table=terraform-lock" \
-            -backend-config="encrypt=true"
+            -backend-config="region=${{ secrets.AWS_REGION }}"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
