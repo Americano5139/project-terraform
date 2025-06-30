@@ -7,6 +7,14 @@ module "eks_module" {
   subnet_ids      = var.subnet_ids
   vpc_id          = var.vpc_id
 
+  create_kms_key = false
+
+  # 이미 있는 alias/eks/eks-cluster 사용
+  cluster_encryption_config = {
+    resources        = ["secrets"]
+    provider_key_arn = "arn:aws:kms:ap-northeast-2:126961545558:alias/eks/eks-cluster"
+  }
+
   eks_managed_node_groups = {
     default = {
       desired_size    = 2
