@@ -19,6 +19,12 @@ module "vpc" {
   cluster_name = var.cluster_name
 }
 
+module "rds" {
+  source                 = "./modules/rds"
+  db_security_group_ids = [module.vpc.default_sg_id]
+  db_subnet_group_name  = module.vpc.db_subnet_group_name
+}
+
 # module "eks" {
 #  source       = "./modules/eks"
 #  region       = var.aws_region
