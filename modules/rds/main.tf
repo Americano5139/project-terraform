@@ -14,3 +14,11 @@ resource "aws_db_instance" "this" {
   deletion_protection    = false
 }
 
+resource "aws_db_subnet_group" "default" {
+  name       = "nextcloud-db-subnet-group"
+  subnet_ids = var.private_subnet_ids
+
+  tags = {
+    Name = "Nextcloud DB subnet group"
+  }
+}
