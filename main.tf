@@ -22,9 +22,9 @@ module "vpc" {
 module "rds" {
   source                 = "./modules/rds"
   db_security_group_ids = [module.vpc.default_sg_id]
-  db_subnet_group_name  = module.vpc.db_subnet_group_name
   db_username           = var.db_username
   db_password           = var.db_password
+  private_subnet_ids     = module.vpc.private_subnets
 }
 
 # module "eks" {
